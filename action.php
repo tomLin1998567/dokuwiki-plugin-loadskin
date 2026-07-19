@@ -12,7 +12,6 @@ if(!defined('DOKU_INC')) die();
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC.'lib/plugins/');
 if(!defined('DOKU_LF')) define('DOKU_LF', "\n");
 
-require_once(DOKU_PLUGIN.'action.php');
 
 /**
  * All DokuWiki plugins to interfere with the event system
@@ -193,13 +192,13 @@ class action_plugin_loadskin extends DokuWiki_Action_Plugin {
                     $id = str_ireplace($langPath, '', $id);
             }
 
-            if($data[$id]) return $data[$id];
+            if(isset($data[$id]) && $data[$id]) return $data[$id];
 
             $path  = explode(':', $id);
 
             while(count($path) > 0) {
                 $id = implode(':', $path);
-                if($data[$id]) return $data[$id];
+                if(isset($data[$id]) && $data[$id]) return $data[$id];
                 array_pop($path);
             }
         }
@@ -217,7 +216,7 @@ class action_plugin_loadskin extends DokuWiki_Action_Plugin {
         if(@file_exists($userConf)) {
             $data = unserialize(io_readFile($userConf, false));
             if ($act == 'get')
-                return $data[$user];
+                return $data[$user] ?? false;
             unset($data[$user]);
         }
         if ($act == 'get')
