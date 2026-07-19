@@ -126,7 +126,7 @@ class action_plugin_loadskin extends DokuWiki_Action_Plugin {
         $tpls   = $helper->getTemplates();
 
         $mobileSwitch = $this->getConf('mobileSwitch');
-        $user = $_SERVER['REMOTE_USER'];
+        $user = $_SERVER['REMOTE_USER'] ?? '';
 
         $tplRequest = $INPUT->str('tpl');
         $actSelect  = $INPUT->str('act') && ($INPUT->str('act') == 'select');
