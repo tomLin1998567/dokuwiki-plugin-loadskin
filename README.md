@@ -26,8 +26,6 @@ cd /path/to/dokuwiki
 git clone https://github.com/tomLin1998567/dokuwiki-plugin-loadskin.git lib/plugins/loadskin
 ```
 
-Or download the ZIP from the [releases page](https://github.com/tomLin1998567/dokuwiki-plugin-loadskin/releases).
-
 Then enable the plugin via **Admin → Extensions**.
 
 ## Usage
